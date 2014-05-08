@@ -17,4 +17,5 @@ where `speaker` get a value between 0 and 3, with the following meaning:
 It is designed for a 7.1 surround setup, but can be changed editing the value of `speakerMode` variable from `FMOD_SPEAKERMODE_7POINT1` to one of the `FMOD_SPEAKERMODE` values.  
 Another value to configure, is the device index (`deviceNumber`) referring to the used sound card, that can be found with the `FMOD_System_GetDriverInfo` method.
 
+
 Tested with openFrameworks 0.8.1 on Linux Debian 64bit.
