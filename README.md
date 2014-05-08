@@ -7,7 +7,7 @@ It provides the following method:
 
     void playTo(int speaker);
 
-where `speaker` get a value between 0 and 3, with the following meaning:
+where `speaker` is a value between 0 and 3, with the following meaning:
 
 * **0** send to rear speakers (R+L)
 * **1** send to side speakers (R+L)
