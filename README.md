@@ -13,12 +13,12 @@ Example:
 
 	audioPlayer = new ofxMultiSpeakerSoundPlayer();
 
-	audioPlayer.load("audio.wav");
+	audioPlayer->load("audio.wav");
 
-	audioPlayer.playTo(0); //rear speakers
-	audioPlayer.playTo(1); //side speakers
-	audioPlayer.playTo(2); //frontal speakers
-	audioPlayer.playTo(3); //central speakers
+	audioPlayer->playTo(0); //rear speakers
+	audioPlayer->playTo(1); //side speakers
+	audioPlayer->playTo(2); //frontal speakers
+	audioPlayer->playTo(3); //central speakers
 
 
 Tested with openFrameworks 0.9.3 on Windows 10 64bit.
