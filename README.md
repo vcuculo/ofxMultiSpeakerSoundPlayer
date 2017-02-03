@@ -1,6 +1,30 @@
 ofxMultiSpeakerSoundPlayer
 ==========================
 
+8 channel audio output for openFrameworks
+
+Updated to openFrameworks 0.9+
+
+Remember to configure your windows system to 7.1 audio output.
+
+Example:
+		
+	ofxMultiSpeakerSoundPlayer * audioPlayer;
+
+	audioPlayer = new ofxMultiSpeakerSoundPlayer();
+
+	audioPlayer->load("audio.wav");
+
+	audioPlayer->playTo(0); //rear speakers
+	audioPlayer->playTo(1); //side speakers
+	audioPlayer->playTo(2); //frontal speakers
+	audioPlayer->playTo(3); //central speakers
+
+
+Tested with openFrameworks 0.9.3 on Windows 10 64bit.
+
+-------------------------
+
 An implementation of ofSoundPlayer using FMod to handle each single speaker connected to a surround sound card.  
 For example, with this addon, is possible to send one sound file to the frontal speakers, another sound file to the side speakers etc.  
 It provides the following method:

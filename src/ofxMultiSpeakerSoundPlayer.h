@@ -11,35 +11,15 @@ extern "C" {
 #include "fmod_errors.h"
 }
 
-//		TO DO :
-//		---------------------------
-// 		-fft via fmod, as in the last time...
-// 		-close fmod if it's up
-//		-loadSoundForStreaming(char * fileName);
-//		---------------------------
 
-// 		interesting:
-//		http://www.compuphase.com/mp3/mp3loops.htm
-
-
-// ---------------------------------------------------------------------------- SOUND SYSTEM FMOD
-
-// --------------------- global functions:
-void ofFmodSoundStopAll();
-void ofFmodSoundSetVolume(float vol);
-void ofFmodSoundUpdate();						// calls FMOD update.
-float * ofFmodSoundGetSpectrum(int nBands);		// max 512...
-
-
-// --------------------- player functions:
 class ofxMultiSpeakerSoundPlayer : public ofBaseSoundPlayer {
 
 	public:
 
 		ofxMultiSpeakerSoundPlayer();
 
-		bool loadSound(string fileName, bool stream = false);
-		void unloadSound();
+		bool load(string fileName, bool stream = false);
+		void unload();
 		void play();
 		void playTo(int speaker);
 		void stop();
@@ -53,13 +33,13 @@ class ofxMultiSpeakerSoundPlayer : public ofBaseSoundPlayer {
 		void setPosition(float pct); // 0 = start, 1 = end;
 		void setPositionMS(int ms);
 
-		float getPosition();
-		int getPositionMS();
-		bool getIsPlaying();
-		float getSpeed();
-		float getPan();
-		float getVolume();
-		bool isLoaded();
+		float getPosition() const ;
+		int getPositionMS() const ;
+		bool isPlaying() const ;
+		float getSpeed() const ;
+		float getPan() const ;
+		float getVolume() const ;
+		bool isLoaded() const ;
 
 		static void initializeFmod();
 		static void closeFmod();
@@ -78,5 +58,7 @@ class ofxMultiSpeakerSoundPlayer : public ofBaseSoundPlayer {
 		FMOD_RESULT result;
 		FMOD_CHANNEL * channel;
 		FMOD_SOUND * sound;
+
+		string currentLoaded;
 };
 
