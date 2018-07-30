@@ -196,11 +196,12 @@ void ofxMultiSpeakerSoundPlayer::closeFmod()
 }
 
 //------------------------------------------------------------
-bool ofxMultiSpeakerSoundPlayer::load(string fileName, bool stream)
+bool ofxMultiSpeakerSoundPlayer::load(const std::filesystem::path& fileName, bool stream)
 {
-	currentLoaded = fileName;
+  string fileNameStr;
+	currentLoaded = fileName.string();
 
-    fileName = ofToDataPath(fileName);
+    fileNameStr = ofToDataPath(fileName.string());
 
     // fmod uses IO posix internally, might have trouble
     // with unicode paths...
@@ -227,12 +228,12 @@ bool ofxMultiSpeakerSoundPlayer::load(string fileName, bool stream)
     int fmodFlags =  FMOD_SOFTWARE;
     if(stream)fmodFlags =  FMOD_SOFTWARE | FMOD_CREATESTREAM;
 
-    result = FMOD_System_CreateSound(sys, fileName.c_str(),  fmodFlags, NULL, &sound);
+    result = FMOD_System_CreateSound(sys, fileNameStr.c_str(),  fmodFlags, NULL, &sound);
 
     if (result != FMOD_OK)
     {
         bLoadedOk = false;
-        ofLogError("ofxMultiSpeakerSoundPlayer") << "loadSound(): could not load \"" << fileName << "\"";
+        ofLogError("ofxMultiSpeakerSoundPlayer") << "loadSound(): could not load \"" << fileNameStr << "\"";
     }
     else
     {
@@ -279,7 +280,7 @@ float ofxMultiSpeakerSoundPlayer::getPan() const
 }
 
 //------------------------------------------------------------
-float ofxMultiSpeakerSoundPlayer::getVolume() const 
+float ofxMultiSpeakerSoundPlayer::getVolume() const
 {
     return volume;
 }
@@ -511,4 +512,3 @@ void ofxMultiSpeakerSoundPlayer::stop()
 {
     FMOD_Channel_Stop(channel);
 }
-

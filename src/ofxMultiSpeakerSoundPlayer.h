@@ -1,10 +1,12 @@
 #pragma once
 
+using namespace std;
+
 #include "ofConstants.h"
+#include "ofMath.h"
+#include "ofLog.h"
 
-
-#include "ofBaseSoundPlayer.h"
-
+#include "ofSoundBaseTypes.h"
 
 extern "C" {
 #include "fmod.h"
@@ -18,7 +20,7 @@ class ofxMultiSpeakerSoundPlayer : public ofBaseSoundPlayer {
 
 		ofxMultiSpeakerSoundPlayer();
 
-		bool load(string fileName, bool stream = false);
+		bool load(const std::filesystem::path& fileName, bool stream = false);
 		void unload();
 		void play();
 		void playTo(int speaker);
@@ -61,4 +63,3 @@ class ofxMultiSpeakerSoundPlayer : public ofBaseSoundPlayer {
 
 		string currentLoaded;
 };
-
